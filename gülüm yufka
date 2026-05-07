@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gülüm Yufka Takip</title>
+
+<style>
+body{font-family:Arial;margin:0;background:#f7f7f7;}
+header{background:#ff4da6;color:#fff;padding:15px;text-align:center;font-size:22px;}
+.container{padding:10px;}
+.box{background:#fff;border:2px solid #ff4da6;border-radius:10px;margin-bottom:10px;padding:10px;}
+h3{margin:0 0 10px;}
+input{width:100%;padding:6px;margin-bottom:6px;}
+table{width:100%;border-collapse:collapse;}
+td,th{border:1px solid #ccc;padding:5px;text-align:center;}
+button{width:100%;padding:10px;background:#ff4da6;color:white;border:none;margin-top:5px;}
+.total{font-weight:bold;}
+</style>
+
+</head>
+
+<body>
+
+<header>Gülüm Yufka</header>
+
+<div class="container">
+
+<div class="box">
+<h3>Tarih</h3>
+<input type="date" id="tarih">
+</div>
+
+<div class="box">
+<h3>Ürün Takip</h3>
+<table>
+<tr><th>Ürün</th><th>Üretilen</th><th>Satılan</th><th>Kalan</th></tr>
+<tr><td>Poğaça</td><td><input></td><td><input></td><td><input></td></tr>
+<tr><td>Bazlama</td><td><input></td><td><input></td><td><input></td></tr>
+<tr><td>Gözleme</td><td><input></td><td><input></td><td><input></td></tr>
+<tr><td>Mantı</td><td><input></td><td><input></td><td><input></td></tr>
+<tr><td>Börek</td><td><input></td><td><input></td><td><input></td></tr>
+</table>
+</div>
+
+<div class="box">
+<h3>Gelir</h3>
+<input type="number" id="nakit" placeholder="Nakit">
+<input type="number" id="kart" placeholder="Kart">
+<input type="number" id="diger" placeholder="Diğer">
+</div>
+
+<div class="box">
+<h3>Masraflar</h3>
+<input type="number" id="gider1" placeholder="Gider 1">
+<input type="number" id="gider2" placeholder="Gider 2">
+<input type="number" id="gider3" placeholder="Gider 3">
+</div>
+
+<div class="box">
+<h3>Gün Sonu</h3>
+<p>Toplam Gelir: <span id="gelir">0</span> ₺</p>
+<p>Toplam Gider: <span id="gider">0</span> ₺</p>
+<p class="total">Net Kasa: <span id="net">0</span> ₺</p>
+<button onclick="hesapla()">Hesapla</button>
+</div>
+
+</div>
+
+<script>
+function hesapla(){
+let nakit = Number(document.getElementById("nakit").value)||0;
+let kart = Number(document.getElementById("kart").value)||0;
+let diger = Number(document.getElementById("diger").value)||0;
+
+let gider1 = Number(document.getElementById("gider1").value)||0;
+let gider2 = Number(document.getElementById("gider2").value)||0;
+let gider3 = Number(document.getElementById("gider3").value)||0;
+
+let toplamGelir = nakit + kart + diger;
+let toplamGider = gider1 + gider2 + gider3;
+let net = toplamGelir - toplamGider;
+
+document.getElementById("gelir").innerText = toplamGelir;
+document.getElementById("gider").innerText = toplamGider;
+document.getElementById("net").innerText = net;
+}
+</script>
+
+</body>
+</html>
